@@ -1,8 +1,27 @@
 const authorService = require("../services/author.service");
 
+// Controller untuk mengambil semua penulis
+async function getAllAuthorController(req, res) {
+  try {
+    const authors = await authorService.getAll();
+    res.send({
+      status: "success",
+      message: "Authors berhasil diambil!",
+      data: {
+        authors,
+      },
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: "error",
+      message: error.message,
+    });
+  }
+}
+
+// Controller untuk membuat penulis baru
 async function postAuthorController(req, res) {
   try {
-    // Pastikan payload ada di body
     const data = req.body;
 
     if (!data) {
@@ -30,5 +49,6 @@ async function postAuthorController(req, res) {
 }
 
 module.exports = {
+  getAllAuthorController,
   postAuthorController,
 };

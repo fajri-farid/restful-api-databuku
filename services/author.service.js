@@ -6,6 +6,12 @@ async function create(data) {
   return author;
 }
 
+async function getAll() {
+  const authors = await authors.findAll();
+
+  return authors;
+}
+
 module.exports = {
   create,
 };
