@@ -1,21 +1,14 @@
 const express = require("express");
-const authorRouter = require("./routes/author.route");
-
 const app = express();
-const PORT = 8000;
+const authorRoutes = require("./routes/author.route");
 
-// Middleware untuk parsing JSON dan URL-encoded data
+// Middleware untuk parsing JSON
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Route utama (/)
-app.get("/", (req, res) => {
-  res.send("OK");
-});
+// Routes
+app.use("/authors", authorRoutes);
 
-app.use("/authors", authorRouter);
-
-// Mulai server
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log("Server is listening on port", PORT);
+  console.log(`Server is running on port ${PORT}`);
 });
