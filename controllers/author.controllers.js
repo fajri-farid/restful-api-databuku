@@ -1,19 +1,34 @@
 const authorService = require("../services/author.service");
 
 async function postAuthorController(req, res) {
-  const data = req.payload;
+  try {
+    // Pastikan payload ada di body
+    const data = req.body;
 
-  const authorData = await authorService.create(data);
+    if (!data) {
+      return res.status(400).send({
+        status: "error",
+        message: "Data payload is missing",
+      });
+    }
 
-  res.send({
-    status: "success",
-    message: "Author berhasil dibuat!",
-    data: {
-      author: authorData,
-    },
-  });
+    const authorData = await authorService.create(data);
+
+    res.send({
+      status: "success",
+      message: "Author berhasil dibuat!",
+      data: {
+        author: authorData,
+      },
+    });
+  } catch (error) {
+    res.status(500).send({
+      status: "error",
+      message: error.message,
+    });
+  }
 }
 
-module.export = {
+module.exports = {
   postAuthorController,
 };

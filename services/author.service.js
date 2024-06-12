@@ -6,6 +6,6 @@ async function create(data) {
   return author;
 }
 
-module.export = {
+module.exports = {
   create,
 };
