@@ -1,4 +1,6 @@
-const express = require('express');
+const express = require("express");
+const authorRouter = require("./routes/author.route");
+
 const app = express();
 const PORT = 8000;
 
@@ -7,11 +9,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Route utama (/)
-app.get('/', (req, res) => {
-  res.send('OK'); 
+app.get("/", (req, res) => {
+  res.send("OK");
 });
+
+app.use("/authors", authorRouter);
 
 // Mulai server
 app.listen(PORT, () => {
-  console.log('Server is listening on port', PORT);
+  console.log("Server is listening on port", PORT);
 });
