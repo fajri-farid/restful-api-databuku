@@ -1,22 +1,23 @@
 module.exports = (sequelize, Sequelize) => {
-  const Book = sequelize.define("book", {
-    title: {
-      type: Sequelize.STRING,
-      allowNull: false, // Judul buku tidak boleh kosong
+  const Authors = sequelize.define("authors", {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
-    description: {
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    bio: {
       type: Sequelize.TEXT,
+      allowNull: false,
     },
-    published: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: false, // Default buku belum terbit
-    },
-    author: {
-      // Menambahkan kolom author
-      type: Sequelize.STRING,
-      allowNull: false, // Nama penulis tidak boleh kosong
+    birthdate: {
+      type: Sequelize.DATEONLY,
+      allowNull: false,
     },
   });
 
-  return Book;
+  return Authors;
 };
