@@ -18,6 +18,33 @@ async function getAllAuthorController(req, res) {
   }
 }
 
+async function getAuthorByIdController(req, res) {
+  try {
+    const { id } = req.params;
+    const author = await authorService.getById(id);
+
+    if (author) {
+      res.send({
+        status: "success",
+        message: "Author berhasil diambil!",
+        data: {
+          author,
+        },
+      });
+    } else {
+      res.status(404).send({
+        status: "error",
+        message: `Author dengan ID ${id} tidak ditemukan`,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      status: "error",
+      message: error.message,
+    });
+  }
+}
+
 async function postAuthorController(req, res) {
   try {
     const data = req.body;
@@ -85,9 +112,13 @@ async function updateAuthorController(req, res) {
     const result = await authorService.update(id, data);
 
     if (result === 1) {
+      const updatedAuthors = await authorService.getById(id);
       res.send({
         status: "success",
         message: "Author berhasil diupdate!",
+        data: {
+          book: updatedAuthors,
+        },
       });
     } else {
       res.status(404).send({
@@ -108,4 +139,5 @@ module.exports = {
   postAuthorController,
   deleteAuthorController,
   updateAuthorController,
+  getAuthorByIdController,
 };
