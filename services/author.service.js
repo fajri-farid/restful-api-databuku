@@ -1,17 +1,32 @@
-const db = require("../config/db/index");
-const { authors } = db;
+const db = require("../config/db");
 
 async function create(data) {
-  const author = await authors.create(data);
+  const author = await db.authors.create(data);
   return author;
 }
 
 async function getAll() {
-  const authors = await authors.findAll();
+  const authorsList = await db.authors.findAll();
+  return authorsList;
+}
 
-  return authors;
+async function deleteById(id) {
+  const result = await db.authors.destroy({
+    where: { id: id },
+  });
+  return result;
+}
+
+async function update(id, data) {
+  const result = await db.authors.update(data, {
+    where: { id: id },
+  });
+  return result[0];
 }
 
 module.exports = {
   create,
+  getAll,
+  deleteById,
+  update,
 };
