@@ -19,5 +19,14 @@ module.exports = (sequelize, Sequelize) => {
     },
   });
 
+  Authors.associate = (models) => {
+    Authors.hasMany(models.books, {
+      foreignKey: "authorId",
+      as: "books",
+      onDelete: "CASCADE",
+      onUpdate: "CASCADE",
+    });
+  };
+
   return Authors;
 };

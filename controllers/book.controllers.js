@@ -30,7 +30,7 @@ async function createBookController(req, res) {
 
 async function getAllBooksController(req, res) {
   try {
-    const books = await bookService.findAll();
+    const books = await bookService.getAll();
     res.send({
       status: "success",
       message: "Books berhasil diambil!",
@@ -49,7 +49,7 @@ async function getAllBooksController(req, res) {
 async function getBookByIdController(req, res) {
   try {
     const { id } = req.params;
-    const book = await bookService.findOne(id);
+    const book = await bookService.getById(id);
 
     if (book) {
       res.send({
@@ -81,9 +81,13 @@ async function updateBookController(req, res) {
     const result = await bookService.update(id, data);
 
     if (result == 1) {
+      const updatedBook = await bookService.getById(id);
       res.send({
         status: "success",
         message: "Book was updated successfully.",
+        data: {
+          book: updatedBook,
+        },
       });
     } else {
       res.send({
@@ -94,7 +98,7 @@ async function updateBookController(req, res) {
   } catch (error) {
     res.status(500).send({
       status: "error",
-      message: "Error updating Book with id=" + id,
+      message: `Error updating Book with id=${id}`,
     });
   }
 }
@@ -103,7 +107,7 @@ async function deleteBookController(req, res) {
   try {
     const { id } = req.params;
 
-    const result = await bookService.delete(id);
+    const result = await bookService.deleteById(id);
 
     if (result == 1) {
       res.send({

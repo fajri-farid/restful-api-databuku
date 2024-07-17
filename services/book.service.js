@@ -5,12 +5,12 @@ async function create(data) {
   return book;
 }
 
-async function findAll() {
+async function getAll() {
   const booksList = await db.books.findAll({ include: ["author"] });
   return booksList;
 }
 
-async function findOne(id) {
+async function getById(id) {
   const book = await db.books.findByPk(id, { include: ["author"] });
   return book;
 }
@@ -31,8 +31,8 @@ async function deleteById(id) {
 
 module.exports = {
   create,
-  findAll,
-  findOne,
+  getAll,
+  getById,
   update,
   deleteById,
 };

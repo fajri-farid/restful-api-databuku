@@ -6,8 +6,20 @@ async function create(data) {
 }
 
 async function getAll() {
-  const authorsList = await db.authors.findAll();
+  const authorsList = await db.authors.findAll({
+    include: [
+      {
+        model: db.books,
+        as: "books",
+      },
+    ],
+  });
   return authorsList;
+}
+
+async function getById(id) {
+  const author = await db.authors.findByPk(id, { include: ["books"] });
+  return author;
 }
 
 async function deleteById(id) {
@@ -27,6 +39,7 @@ async function update(id, data) {
 module.exports = {
   create,
   getAll,
+  getById,
   deleteById,
   update,
 };

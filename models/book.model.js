@@ -19,12 +19,17 @@ module.exports = (sequelize, Sequelize) => {
     },
     authorId: {
       type: Sequelize.INTEGER,
+      allowNull: false,
       references: {
         model: "authors",
         key: "id",
       },
-      allowNull: false,
     },
+  });
+
+  Books.belongsTo(sequelize.models.authors, {
+    foreignKey: "authorId",
+    as: "author",
   });
 
   return Books;
