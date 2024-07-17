@@ -1,4 +1,4 @@
-const db = require("../config/db");
+const db = require("../models/index");
 
 async function create(data) {
   const author = await db.authors.create(data);
