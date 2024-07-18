@@ -78,7 +78,7 @@ module.exports = {
           authorId: 10,
         },
       ],
-      {}
+      { autoIncrement: true, primaryKey: true }
     );
   },
 
