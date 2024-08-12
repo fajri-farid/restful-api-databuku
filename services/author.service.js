@@ -1,16 +1,16 @@
 const db = require("../models/index");
 
 async function create(data) {
-  const author = await db.authors.create(data);
+  const author = await db.Authors.create(data);
   return author;
 }
 
 async function getAll() {
-  const authorsList = await db.authors.findAll({
+  const authorsList = await db.Authors.findAll({
     include: [
       {
-        model: db.books,
-        as: "books",
+        model: db.Books,
+        as: "Books",
       },
     ],
   });
@@ -18,19 +18,19 @@ async function getAll() {
 }
 
 async function getById(id) {
-  const author = await db.authors.findByPk(id, { include: ["books"] });
+  const author = await db.Authors.findByPk(id, { include: ["Books"] });
   return author;
 }
 
 async function deleteById(id) {
-  const result = await db.authors.destroy({
+  const result = await db.Authors.destroy({
     where: { id: id },
   });
   return result;
 }
 
 async function update(id, data) {
-  const result = await db.authors.update(data, {
+  const result = await db.Authors.update(data, {
     where: { id: id },
   });
   return result[0];
