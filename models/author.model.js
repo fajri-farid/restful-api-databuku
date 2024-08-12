@@ -17,8 +17,8 @@ module.exports = (sequelize, Sequelize) => {
   Authors.init(
     {
       id: {
-        type: Sequelize.INTEGER,
-        defaultValue: createId, // Menggunakan cuid sebagai default ID
+        type: Sequelize.STRING,
+        defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       name: {

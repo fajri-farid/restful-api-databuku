@@ -36,10 +36,10 @@ module.exports = (sequelize, Sequelize) => {
       authorId: {
         type: Sequelize.STRING,
         allowNull: false,
-        references: {
-          model: "authors",
-          key: "id",
-        },
+        // references: {
+        //   model: "Authors",
+        //   key: "id",
+        // },
       },
     },
     {

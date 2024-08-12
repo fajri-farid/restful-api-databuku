@@ -6,12 +6,16 @@ async function create(data) {
 }
 
 async function getAll() {
-  const booksList = await db.Books.findAll({ include: ["Authors"] });
+  const booksList = await db.Books.findAll({
+    include: db.Authors, // Menggunakan objek model Authors secara langsung
+  });
   return booksList;
 }
 
 async function getById(id) {
-  const book = await db.Books.findByPk(id, { include: ["Authors"] });
+  const book = await db.Books.findByPk(id, {
+    include: db.Authors, // Menggunakan objek model Authors secara langsung
+  });
   return book;
 }
 
