@@ -1,8 +1,10 @@
+const { createId } = require("@paralleldrive/cuid2");
+
 module.exports = (sequelize, Sequelize) => {
   const Books = sequelize.define("books", {
     id: {
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
+      type: Sequelize.STRING,
+      defaultValue: createId(), // Menggunakan cuid sebagai default ID
       primaryKey: true,
     },
     title: {
@@ -18,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
     },
     authorId: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false,
       references: {
         model: "authors",

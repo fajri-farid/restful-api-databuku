@@ -12,8 +12,7 @@ module.exports = {
 
     await queryInterface.createTable("authors", {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.STRING,
         primaryKey: true,
       },
       name: {
