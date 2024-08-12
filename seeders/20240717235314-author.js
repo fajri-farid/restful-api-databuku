@@ -77,6 +77,11 @@ module.exports = {
           bio: "journalist",
           birthdate: "1998-06-18",
         },
+
+        // klw mau tambah seeder dengan cuid2 sebagai id
+        // {
+        //   id: createId(),
+        // },
       ],
       {}
     );
