@@ -2,52 +2,49 @@ const { createId } = require("@paralleldrive/cuid2");
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-  // class nama-table
-  class Users extends Model {
+  class Book_Language extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    // relasi disini
     static associate(models) {
       // define association here
       //   ex:
-      //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
+      Roles.hasOne(models.Users, { foreignKey: "role_id" }); // one to one dengan users
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
-  // name-table.init
-  Users.init(
+  Book_Language.init(
     {
       id: {
         type: Sequelize.STRING,
         defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
-      name: {
+      book_id: {
         type: Sequelize.STRING,
         allowNull: false,
+        references: {
+          model: "Books",
+          key: "id",
+        },
       },
-      // another column here...
-
-      // yang ada referensinya
-      // role_id: {
-      //   type: Sequelize.STRING,
-      //   allowNull: false,
-      //   // reference table
-      //   references: {
-      //     model: "Roles", // Nama model yang menjadi referensi
-      //     key: "id", // Nama kolom pada model yang menjadi referensi
-      //   },
-      // },
+      language_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: "Languages",
+          key: "id",
+        },
+      },
     },
     {
       sequelize,
-      modelName: "Users", // nama model
+      modelName: "Book_Language",
     }
   );
 
-  return Users; // return <nama table>
+  return Book_Language;
 };

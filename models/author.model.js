@@ -27,15 +27,15 @@ module.exports = (sequelize, Sequelize) => {
       },
       bio: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       birthdate: {
         type: Sequelize.DATEONLY,
-        allowNull: false,
+        allowNull: true,
       },
       address: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
