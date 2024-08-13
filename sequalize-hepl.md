@@ -11,3 +11,7 @@ npx sequelize-cli db:seed --seed 20240717235251-book.js
 
 npx sequelize-cli db:seed:undo:all
 npx sequelize-cli db:migrate:undo:all
+
+<!-- Membuat migrations -->
+
+npx sequelize-cli migration:generate --name nama_migrasi
