@@ -2,7 +2,7 @@ const { createId } = require("@paralleldrive/cuid2");
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-  class Books extends Model {
+  class Book_Tags extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -10,55 +10,41 @@ module.exports = (sequelize, Sequelize) => {
      */
     static associate(models) {
       // define association here
-      // Books.belongsTo(models.Authors, { foreignKey: "authorId" });
+      //   ex:
+      //   Roles.hasOne(models.Users, { foreignKey: "role_id" }); // one to one dengan users
+      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
-  Books.init(
+  Book_Tags.init(
     {
       id: {
         type: Sequelize.STRING,
         defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      releaseYear: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      synopsis: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      publisher_id: {
+      book_id: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Publishers",
+          model: "Book",
           key: "id",
         },
       },
-      price_id: {
+      tag_id: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Prices",
+          model: "Tags",
           key: "id",
         },
       },
     },
     {
       sequelize,
-      modelName: "Books",
+      modelName: "Book_Tags",
     }
   );
 
-  return Books;
+  return Book_Tags;
 };

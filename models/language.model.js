@@ -2,19 +2,24 @@ const { createId } = require("@paralleldrive/cuid2");
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-  class Authors extends Model {
+  // class nama-table
+  class Languages extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    // relasi disini
     static associate(models) {
       // define association here
-      // Authors.hasMany(models.Books, { foreignKey: "authorId" });
+      //   ex:
+      //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
+      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
-  Authors.init(
+  // name-table.init
+  Languages.init(
     {
       id: {
         type: Sequelize.STRING,
@@ -25,24 +30,12 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      bio: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      birthdate: {
-        type: Sequelize.DATEONLY,
-        allowNull: false,
-      },
-      address: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
     },
     {
       sequelize,
-      modelName: "Authors",
+      modelName: "Languages", // nama model
     }
   );
 
-  return Authors;
+  return Languages; // return <nama table>
 };

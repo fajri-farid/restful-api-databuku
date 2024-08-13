@@ -2,7 +2,7 @@ const { createId } = require("@paralleldrive/cuid2");
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-  class Authors extends Model {
+  class Social_Media extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -10,11 +10,13 @@ module.exports = (sequelize, Sequelize) => {
      */
     static associate(models) {
       // define association here
-      // Authors.hasMany(models.Books, { foreignKey: "authorId" });
+      //   ex:
+      //   Roles.hasOne(models.Users, { foreignKey: "role_id" }); // one to one dengan users
+      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
-  Authors.init(
+  Social_Media.init(
     {
       id: {
         type: Sequelize.STRING,
@@ -23,26 +25,14 @@ module.exports = (sequelize, Sequelize) => {
       },
       name: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-      bio: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      birthdate: {
-        type: Sequelize.DATEONLY,
-        allowNull: false,
-      },
-      address: {
-        type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
       sequelize,
-      modelName: "Authors",
+      modelName: "Social_Media ",
     }
   );
 
-  return Authors;
+  return Social_Media;
 };

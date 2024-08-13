@@ -2,63 +2,60 @@ const { createId } = require("@paralleldrive/cuid2");
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
-  class Books extends Model {
+  // class nama-table
+  class Review_Reply extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    // relasi disini
     static associate(models) {
       // define association here
-      // Books.belongsTo(models.Authors, { foreignKey: "authorId" });
+      //   ex:
+      //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
+      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
-  Books.init(
+  // name-table.init
+  Review_Reply.init(
     {
       id: {
         type: Sequelize.STRING,
         defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
-      title: {
+      comment: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      releaseYear: {
-        type: Sequelize.INTEGER,
+      reply_date: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
-      synopsis: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      publisher_id: {
+      user_id: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Publishers",
+          model: "Users",
           key: "id",
         },
       },
-      price_id: {
+      review_id: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Prices",
+          model: "Reviews",
           key: "id",
         },
       },
     },
     {
       sequelize,
-      modelName: "Books",
+      modelName: "Review_Reply", // nama model
     }
   );
 
-  return Books;
+  return Review_Reply; // return <nama table>
 };
