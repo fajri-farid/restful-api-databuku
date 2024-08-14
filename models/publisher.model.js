@@ -36,7 +36,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Contacts",
+          model: "Publisher_Contact",
           key: "id",
         },
       },
