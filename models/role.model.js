@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Roles.hasOne(models.Users, { foreignKey: "role_id" }); // one to one dengan users
+      Roles.belongsTo(models.Users, { foreignKey: "role_id" });
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }

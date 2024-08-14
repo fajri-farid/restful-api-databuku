@@ -14,7 +14,12 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
-      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
+
+      Prices.hasOne(models.Currency, { foreignKey: "currency_id" });
+
+      // belongs to
+      Prices.belongsTo(models.Books, { foreignKey: "price_id" });
+    
     }
   }
 

@@ -12,7 +12,9 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       //   Roles.hasOne(models.Users, { foreignKey: "role_id" }); // one to one dengan users
-      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
+      Publisher_Contact.belongsTo(models.Publisher, {
+        foreignKey: "contact_id",
+      });
     }
   }
 

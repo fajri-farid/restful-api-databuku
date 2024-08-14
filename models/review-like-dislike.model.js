@@ -12,8 +12,9 @@ module.exports = (sequelize, Sequelize) => {
     // relasi disini
     static associate(models) {
       // define association here
-      //   ex:
-      //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
+      // ex:
+      Review_Like_Dislike.hasMany(models.Books, { foreignKey: "user_id" });
+      Review_Like_Dislike.hasMany(models.Books, { foreignKey: "review_id" });
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }

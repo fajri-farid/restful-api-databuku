@@ -13,7 +13,8 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
+      Book_Store.hasMany(models.Books, { foreignKey: "book_id" });
+      Book_Store.hasMany(models.Books, { foreignKey: "store_id" });
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }

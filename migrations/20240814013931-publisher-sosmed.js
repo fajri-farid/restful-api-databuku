@@ -18,11 +18,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      author_id: {
+      publisher_id: {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Authors",
+          model: "Publisher",
           key: "id",
         },
         onUpdate: "CASCADE",

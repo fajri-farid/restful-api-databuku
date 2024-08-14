@@ -18,10 +18,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      reply_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
       user_id: {
         type: Sequelize.STRING,
         allowNull: false,

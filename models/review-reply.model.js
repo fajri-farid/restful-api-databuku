@@ -13,8 +13,13 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
-      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
+      Review_Reply.hasMany(models.Users, { foreignKey: "user_id" });
+      Review_Reply.hasMany(models.Reviews, { foreignKey: "review_id" });
+
+      // belongs to
+      Review_Reply.belongsTo(models.Review_Reply_Like_Dislike, {
+        foreignKey: "review_reply_id",
+      });
     }
   }
 
@@ -28,10 +33,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       comment: {
         type: Sequelize.STRING,
-        allowNull: false,
-      },
-      reply_date: {
-        type: Sequelize.DATE,
         allowNull: false,
       },
       user_id: {

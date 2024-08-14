@@ -12,9 +12,13 @@ module.exports = (sequelize, Sequelize) => {
     // relasi disini
     static associate(models) {
       // define association here
-      //   ex:
-      //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
-      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
+      // ex:
+      Reviews.hasMany(models.Books, { foreignKey: "user_id" });
+      Reviews.hasMany(models.Books, { foreignKey: "book_id" });
+
+      // belongs to
+      Reviews.belongsTo(models.Review_Reply, { foreignKey: "review_id" });
+      Reviews.belongsTo(models.Review_Like_Dislike, { foreignKey: "review_id" });
     }
   }
 
