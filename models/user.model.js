@@ -58,12 +58,13 @@ module.exports = (sequelize, Sequelize) => {
       role_id: {
         type: Sequelize.STRING,
         allowNull: false,
-        // reference table
         references: {
-          model: "Roles", // Nama model yang menjadi referensi
-          key: "id", // Nama kolom pada model yang menjadi referensi
+          model: "Roles",
+          key: "id",
         },
         defaultValue: "abcdefg", // ! nanti diganti klw sudah dapat cuid2 dari role guest
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
     },
     {

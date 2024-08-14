@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      modelName: "Social_Media ",
+      modelName: "Social_Media",
     }
   );
 

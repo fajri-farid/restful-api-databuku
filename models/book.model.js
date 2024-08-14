@@ -33,10 +33,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       publisher_id: {
         type: Sequelize.STRING,
         allowNull: false,

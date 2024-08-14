@@ -10,26 +10,52 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
 
-    await queryInterface.createTable("Authors", {
+    await queryInterface.createTable("Users", {
       id: {
         type: Sequelize.STRING,
         primaryKey: true,
       },
-      name: {
+      first_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      last_name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      username: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      email: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       bio: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
-      birthdate: {
-        type: Sequelize.DATEONLY,
-        allowNull: false,
+      birth_date: {
+        type: Sequelize.TEXT,
+        allowNull: true,
       },
       address: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true,
+      },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      role_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        // reference table
+        references: {
+          model: "Roles", // Nama model yang menjadi referensi
+          key: "id", // Nama kolom pada model yang menjadi referensi
+        },
+        defaultValue: "abcdefg", // ! nanti diganti klw sudah dapat cuid2 dari role guest
       },
       createdAt: {
         allowNull: false,
@@ -52,6 +78,6 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
 
-    await queryInterface.dropTable("Authors");
+    await queryInterface.dropTable("Users");
   },
 };
