@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Publishers",
+          model: "Publisher",
           key: "id",
         },
         onUpdate: "CASCADE",
