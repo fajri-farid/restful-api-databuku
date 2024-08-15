@@ -1,6 +1,7 @@
 const express = require("express");
 const authorRouter = require("./routes/author.route");
 const booksRouter = require("./routes/book.routes");
+const roleRouter = require("./routes/role.routes");
 
 const app = express();
 const PORT = 8000;
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/authors", authorRouter);
 app.use("/books", booksRouter);
+app.use("/role", roleRouter);
 
 // Mulai server
 app.listen(PORT, () => {
