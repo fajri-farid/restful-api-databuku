@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
-      Users.hasMany(models.Roles, { foreignKey: "role_id" });
+      Users.belongsTo(models.Roles, { foreignKey: "role_id" });
 
       // belongs to
       Users.belongsTo(models.Reviews, { foreignKey: "user_id" });
