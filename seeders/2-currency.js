@@ -1,7 +1,5 @@
 "use strict";
 
-const { createId } = require("@paralleldrive/cuid2"); // Impor createId dari cuid2
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -16,7 +14,7 @@ module.exports = {
      */
 
     return queryInterface.bulkInsert(
-      "Roles",
+      "Currencies",
       [
         {
           id: "bi964sqjxk0ug6zbzy1r9zx5",
@@ -95,6 +93,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    return queryInterface.bulkDelete("Roles", null, {});
+    return queryInterface.bulkDelete("Currencies", null, {});
   },
 };
