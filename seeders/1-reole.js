@@ -21,14 +21,10 @@ module.exports = {
         {
           id: "cybyqqzobgiueym5vmbng2w2",
           role_name: "guest",
-          createdAt: "2024-08-15T04:42:52.000Z",
-          updatedAt: "2024-08-15T04:42:52.000Z",
         },
         {
           id: "hzxord9rxewld4ys3oihbnm8",
           role_name: "admin",
-          createdAt: "2024-08-15T04:43:40.000Z",
-          updatedAt: "2024-08-15T04:43:40.000Z",
         },
         // klw mau tambah seeder dengan cuid2 sebagai id
         // {
