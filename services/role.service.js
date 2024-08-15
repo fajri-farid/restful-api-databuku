@@ -10,6 +10,11 @@ async function getAll() {
   return roleList;
 }
 
+async function getById(id) {
+  const role = await db.Roles.findByPk(id);
+  return role;
+}
+
 async function update(id, data) {
   const result = await db.Roles.update(data, {
     where: { id: id },
@@ -17,8 +22,17 @@ async function update(id, data) {
   return result[0];
 }
 
+async function deleteById(id) {
+  const result = await db.Roles.destroy({
+    where: { id: id },
+  });
+  return result;
+}
+
 module.exports = {
   create,
   getAll,
   update,
+  deleteById,
+  getById,
 };

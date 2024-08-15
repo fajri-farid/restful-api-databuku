@@ -16,7 +16,7 @@ module.exports = {
         primaryKey: true,
       },
       role_name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(20),
         allowNull: false,
       },
       createdAt: {

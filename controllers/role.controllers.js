@@ -42,6 +42,7 @@ async function postRoleController(req, res) {
     res.status(500).send({
       status: "error",
       message: error.message,
+      details: error.message,
     });
   }
 }
