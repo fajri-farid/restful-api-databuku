@@ -31,6 +31,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      contact_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: "Author_Contacts",
+          key: "id",
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

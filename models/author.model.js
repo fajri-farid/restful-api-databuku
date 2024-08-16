@@ -14,6 +14,7 @@ module.exports = (sequelize, Sequelize) => {
       Authors.belongsTo(models.Author_Books, { foreignKey: "author_id" });
       Authors.belongsTo(models.Author_Sosmed, { foreignKey: "author_id" });
       Authors.belongsTo(models.Author_Books, { foreignKey: "author_id" });
+      Authors.belongsTo(models.Author_Contacts, { foreignKey: "contact_id" });
     }
   }
 
@@ -39,6 +40,14 @@ module.exports = (sequelize, Sequelize) => {
       address: {
         type: Sequelize.STRING,
         allowNull: true,
+      },
+      contact_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: "Author_Contacts",
+          key: "id",
+        },
       },
     },
     {
