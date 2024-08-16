@@ -13,7 +13,8 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Review_Reply.hasMany(models.Users, { foreignKey: "user_id" });
+      Review_Reply.belongsTo(models.Users, { foreignKey: "user_id" });
+
       Review_Reply.hasMany(models.Reviews, { foreignKey: "review_id" });
 
       // belongs to

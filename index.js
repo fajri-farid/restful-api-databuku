@@ -6,6 +6,7 @@ const currencyRouter = require("./routes/currency.routes");
 const socialMediaRouter = require("./routes/social-media.routes");
 const authorContact = require("./routes/author-contact.routes");
 const publisherContact = require("./routes/publisher-contact.routes");
+const user = require("./routes/user.routes");
 
 const app = express();
 const PORT = 8000;
@@ -26,6 +27,7 @@ app.use("/currency", currencyRouter);
 app.use("/social-media", socialMediaRouter);
 app.use("/author-contact", authorContact);
 app.use("/publisher-contact", publisherContact);
+app.use("/user", user);
 
 // Mulai server
 app.listen(PORT, () => {

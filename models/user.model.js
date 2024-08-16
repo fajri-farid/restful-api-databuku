@@ -12,15 +12,15 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
-      Users.belongsTo(models.Roles, { foreignKey: "role_id" });
-
-      // belongs to
-      Users.belongsTo(models.Reviews, { foreignKey: "user_id" });
-      Users.belongsTo(models.Review_Reply, { foreignKey: "user_id" });
-      Users.belongsTo(models.Review_Like_Dislike, { foreignKey: "user_id" });
-      Users.belongsTo(models.Review_Reply_Like_Dislike, {
+      Users.hasMany(models.Reviews, { foreignKey: "user_id" });
+      Users.hasMany(models.Review_Reply, { foreignKey: "user_id" });
+      Users.hasMany(models.Review_Like_Dislike, { foreignKey: "user_id" });
+      Users.hasMany(models.Review_Reply_Like_Dislike, {
         foreignKey: "user_id",
       });
+
+      // belongs to
+      Users.belongsTo(models.Roles, { foreignKey: "role_id" });
     }
   }
 
@@ -59,6 +59,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.TEXT,
         allowNull: true,
       },
+      profile_pic: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -70,7 +74,7 @@ module.exports = (sequelize, Sequelize) => {
           model: "Roles",
           key: "id",
         },
-        defaultValue: "abcdefg", // ! nanti diganti klw sudah dapat cuid2 dari role guest
+        defaultValue: "cybyqqzobgiueym5vmbng2w2",
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
       },
