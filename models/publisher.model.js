@@ -16,7 +16,8 @@ module.exports = (sequelize, Sequelize) => {
       });
 
       // belongs to
-      Publisher.belongsTo(models.Books, { foreignKey: "publisher_id" });
+      Publisher.hasOne(models.Books, { foreignKey: "publisher_id" });
+
       Publisher.belongsTo(models.Publisher_Sosmed, {
         foreignKey: "publisher_id",
       });

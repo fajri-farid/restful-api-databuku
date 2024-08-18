@@ -15,8 +15,7 @@ module.exports = (sequelize, Sequelize) => {
       //   ex:
       Review_Reply.belongsTo(models.Users, { foreignKey: "user_id" });
 
-      Review_Reply.hasMany(models.Reviews, { foreignKey: "review_id" });
-
+      Review_Reply.belongsTo(models.Reviews, { foreignKey: "review_id" });
       // belongs to
       Review_Reply.belongsTo(models.Review_Reply_Like_Dislike, {
         foreignKey: "review_reply_id",

@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       Prices.belongsTo(models.Currencies, { foreignKey: "currency_id" });
 
       // belongs to
-      Prices.belongsTo(models.Books, { foreignKey: "price_id" });
+      Prices.hasOne(models.Books, { foreignKey: "price_id" });
     }
   }
 
