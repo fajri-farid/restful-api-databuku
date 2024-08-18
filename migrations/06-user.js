@@ -43,19 +43,23 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: true,
       },
+      profile_pic: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       password: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       role_id: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         // reference table
         references: {
           model: "Roles", // Nama model yang menjadi referensi
           key: "id", // Nama kolom pada model yang menjadi referensi
         },
-        defaultValue: "abcdefg", // ! nanti diganti klw sudah dapat cuid2 dari role guest
+        defaultValue: "cybyqqzobgiueym5vmbng2w2",
       },
       createdAt: {
         allowNull: false,

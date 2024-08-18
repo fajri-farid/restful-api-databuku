@@ -12,9 +12,9 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       // Roles.hasOne(models.Users, { foreignKey: "role_id" }); // one to one dengan users
+      Book_Language.belongsTo(models.Books, { foreignKey: "book_id" });
 
-      Book_Language.hasMany(models.Users, { foreignKey: "book_id" });
-      Book_Language.hasMany(models.Users, { foreignKey: "language_id" });
+      Book_Language.hasMany(models.Languages, { foreignKey: "language_id" });
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }

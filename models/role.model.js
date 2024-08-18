@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Roles.belongsTo(models.Users, { foreignKey: "role_id" });
+      Roles.hasMany(models.Users, { foreignKey: "role_id" });
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       role_name: {
@@ -31,6 +31,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Roles",
+      hooks: {
+        beforeCreate: (role) => {
+          role.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 

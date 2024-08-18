@@ -13,12 +13,14 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Publisher_Sosmed.hasMany(models.Publisher, {
+      Publisher_Sosmed.belongsTo(models.Publishers, {
         foreignKey: "publisher_id",
       });
-      Publisher_Sosmed.hasMany(models.Social_Media, {
+
+      Publisher_Sosmed.belongsTo(models.Social_Media, {
         foreignKey: "sosial_media_id",
       });
+
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
@@ -39,7 +41,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Publisher",
+          model: "Publishers",
           key: "id",
         },
       },

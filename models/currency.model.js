@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
   // class nama-table
-  class Currency extends Model {
+  class Currencies extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,16 +14,16 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
-      Currency.belongsTo(models.Prices, { foreignKey: "currency_id" });
+      Currencies.hasOne(models.Prices, { foreignKey: "currency_id" });
     }
   }
 
   // name-table.init
-  Currency.init(
+  Currencies.init(
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       name: {
@@ -41,9 +41,14 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      modelName: "Currency", // nama model
+      modelName: "Currencies", // nama model
+      hooks: {
+        beforeCreate: (currency) => {
+          currency.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 
-  return Currency; // return <nama table>
+  return Currencies; // return <nama table>
 };

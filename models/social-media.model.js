@@ -12,10 +12,10 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       //   Roles.hasOne(models.Users, { foreignKey: "role_id" }); // one to one dengan users
-      Social_Media.belongsTo(models.Author_Sosmed, {
+      Social_Media.hasMany(models.Author_Sosmed, {
         foreignKey: "sosial_media_id",
       });
-      Social_Media.belongsTo(models.Publisher_Sosmed, {
+      Social_Media.hasMany(models.Publisher_Sosmed, {
         foreignKey: "sosial_media_id",
       });
     }
@@ -25,7 +25,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       name: {
@@ -36,6 +36,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Social_Media",
+      hooks: {
+        beforeCreate: (role) => {
+          role.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 

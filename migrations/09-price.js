@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Currency",
+          model: "Currencies",
           key: "id",
         },
         onUpdate: "CASCADE",

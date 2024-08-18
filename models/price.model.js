@@ -15,11 +15,10 @@ module.exports = (sequelize, Sequelize) => {
       //   ex:
       //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
 
-      Prices.hasOne(models.Currency, { foreignKey: "currency_id" });
+      Prices.belongsTo(models.Currencies, { foreignKey: "currency_id" });
 
       // belongs to
-      Prices.belongsTo(models.Books, { foreignKey: "price_id" });
-    
+      Prices.hasOne(models.Books, { foreignKey: "price_id" });
     }
   }
 
@@ -39,7 +38,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Currency",
+          model: "Currencies",
           key: "id",
         },
       },

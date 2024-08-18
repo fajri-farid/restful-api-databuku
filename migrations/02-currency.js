@@ -9,21 +9,21 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable("Currency", {
+    await queryInterface.createTable("Currencies", {
       id: {
         type: Sequelize.STRING,
         primaryKey: true,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       code: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(5),
         allowNull: false,
       },
       symbol: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(10),
         allowNull: false,
       },
       createdAt: {
@@ -46,6 +46,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable("Currency");
+    await queryInterface.dropTable("Currencies");
   },
 };
