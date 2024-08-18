@@ -11,8 +11,6 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       // Books.belongsTo(models.Authors, { foreignKey: "authorId" });\
-
-      Books.hasMany(models.Book_Language, { foreignKey: "book_id" });
       // Books.hasMany(models.Author_Books, { foreignKey: "book_id" });
       Books.hasOne(models.Book_Tags, { foreignKey: "book_id" });
       Books.hasMany(models.Reviews, { foreignKey: "book_id" });
@@ -24,6 +22,10 @@ module.exports = (sequelize, Sequelize) => {
 
       Books.belongsToMany(models.Authors, {
         through: "Author_Books",
+        foreignKey: "book_id",
+      });
+      Books.belongsToMany(models.Languages, {
+        through: "Book_Language",
         foreignKey: "book_id",
       });
     }

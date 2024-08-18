@@ -14,7 +14,10 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
-      Languages.belongsTo(models.Book_Language, { foreignKey: "language_id" });
+      Languages.belongsToMany(models.Books, {
+        through: "Book_Language",
+        foreignKey: "language_id",
+      });
     }
   }
 
@@ -23,10 +26,14 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      symbol: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -34,6 +41,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Languages", // nama model
+      hooks: {
+        beforeCreate: (role) => {
+          role.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 
