@@ -31,6 +31,10 @@ module.exports = (sequelize, Sequelize) => {
         through: "Book_Tags",
         foreignKey: "book_id",
       });
+      Books.belongsToMany(models.Stores, {
+        through: "Book_Store",
+        foreignKey: "book_id",
+      });
     }
   }
 
