@@ -30,9 +30,9 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
-      additional_info: {
-        type: Sequelize.TEXT,
-        allowNull: true,
+      price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       currency_id: {
         type: Sequelize.STRING,

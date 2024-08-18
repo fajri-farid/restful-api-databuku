@@ -8,6 +8,7 @@ const authorContactRouter = require("./routes/author-contact.routes");
 const publisherContactRouter = require("./routes/publisher-contact.routes");
 const userRouter = require("./routes/user.routes");
 const publisherRouter = require("./routes/publisher.routes");
+const priceRouter = require("./routes/price.routes");
 
 const app = express();
 const PORT = 8000;
@@ -30,6 +31,7 @@ app.use("/author-contact", authorContactRouter);
 app.use("/publisher-contact", publisherContactRouter);
 app.use("/user", userRouter);
 app.use("/publisher", publisherRouter);
+app.use("/price", priceRouter);
 
 // Mulai server
 app.listen(PORT, () => {
