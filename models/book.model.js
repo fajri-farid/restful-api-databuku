@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
 
       // belongsto
       Books.belongsTo(models.Prices, { foreignKey: "price_id" });
-      Books.belongsTo(models.Publisher, { foreignKey: "publisher_id" });
+      Books.belongsTo(models.Publishers, { foreignKey: "publisher_id" });
 
       Books.belongsToMany(models.Authors, {
         through: "Author_Books",
@@ -52,7 +52,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Publisher",
+          model: "Publishers",
           key: "id",
         },
       },

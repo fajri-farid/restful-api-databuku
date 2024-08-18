@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Publisher_Sosmed.hasMany(models.Publisher, {
+      Publisher_Sosmed.belongsTo(models.Publishers, {
         foreignKey: "publisher_id",
       });
 
@@ -41,7 +41,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "Publisher",
+          model: "Publishers",
           key: "id",
         },
       },

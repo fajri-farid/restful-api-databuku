@@ -90,7 +90,7 @@ async function updateRoleControllerById(req, res) {
       const updatedRole = await roleService.getById(id);
       res.send({
         status: "success",
-        message: "Author berhasil diupdate!",
+        message: "Role berhasil diupdate!",
         data: {
           role: updatedRole,
         },

@@ -4,9 +4,10 @@ const booksRouter = require("./routes/book.routes");
 const roleRouter = require("./routes/role.routes");
 const currencyRouter = require("./routes/currency.routes");
 const socialMediaRouter = require("./routes/social-media.routes");
-const authorContact = require("./routes/author-contact.routes");
-const publisherContact = require("./routes/publisher-contact.routes");
-const user = require("./routes/user.routes");
+const authorContactRouter = require("./routes/author-contact.routes");
+const publisherContactRouter = require("./routes/publisher-contact.routes");
+const userRouter = require("./routes/user.routes");
+const publisherRouter = require("./routes/publisher.routes");
 
 const app = express();
 const PORT = 8000;
@@ -25,9 +26,10 @@ app.use("/books", booksRouter);
 app.use("/role", roleRouter);
 app.use("/currency", currencyRouter);
 app.use("/social-media", socialMediaRouter);
-app.use("/author-contact", authorContact);
-app.use("/publisher-contact", publisherContact);
-app.use("/user", user);
+app.use("/author-contact", authorContactRouter);
+app.use("/publisher-contact", publisherContactRouter);
+app.use("/user", userRouter);
+app.use("/publisher", publisherRouter);
 
 // Mulai server
 app.listen(PORT, () => {

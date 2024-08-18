@@ -14,15 +14,13 @@ module.exports = {
      */
 
     return queryInterface.bulkInsert(
-      "publisherContacts",
+      "Publishers",
       [
         {
-          id: "uxh9lvqzhvnfg43o44bx49bt",
-          phone_number: "+6281998232532",
-          email: "author@gmail.com",
-          address: "Jakarta",
+          id: "y63o9n6ql6zgdydrhaotogw0",
+          name: "Publisher",
+          contact_id: "uxh9lvqzhvnfg43o44bx49bt",
         },
-
         // klw mau tambah seeder dengan cuid2 sebagai id
         // {
         //   id: createId(),
@@ -40,6 +38,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    return queryInterface.bulkDelete("publisherContacts", null, {});
+    return queryInterface.bulkDelete("Publishers", null, {});
   },
 };
