@@ -10,6 +10,7 @@ const userRouter = require("./routes/user.routes");
 const publisherRouter = require("./routes/publisher.routes");
 const priceRouter = require("./routes/price.routes");
 const languageRouter = require("./routes/language.routes");
+const tagsRouter = require("./routes/tags.routes");
 
 const app = express();
 const PORT = 8000;
@@ -34,6 +35,7 @@ app.use("/user", userRouter);
 app.use("/publisher", publisherRouter);
 app.use("/price", priceRouter);
 app.use("/language", languageRouter);
+app.use("/tags", tagsRouter);
 
 // Mulai server
 app.listen(PORT, () => {
