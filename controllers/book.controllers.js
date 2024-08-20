@@ -15,7 +15,7 @@ async function createBookController(req, res) {
 
     res.send({
       status: "success",
-      message: "Book berhasil dibuat!",
+      message: "Buku berhasil dibuat!",
       data: {
         book: bookData,
       },
@@ -23,7 +23,7 @@ async function createBookController(req, res) {
   } catch (error) {
     res.status(500).send({
       status: "error",
-      message: error.message || "Some error occurred while creating the Book.",
+      message: error.message,
     });
   }
 }
@@ -33,7 +33,7 @@ async function getAllBooksController(req, res) {
     const books = await bookService.getAll();
     res.send({
       status: "success",
-      message: "Books berhasil diambil!",
+      message: "Buku berhasil diambil!",
       data: {
         books,
       },
@@ -54,7 +54,7 @@ async function getBookByIdController(req, res) {
     if (book) {
       res.send({
         status: "success",
-        message: "Book berhasil diambil!",
+        message: "Buku berhasil diambil!",
         data: {
           book,
         },
@@ -62,13 +62,13 @@ async function getBookByIdController(req, res) {
     } else {
       res.status(404).send({
         status: "error",
-        message: `Cannot find Book with id=${id}.`,
+        message: `Cannot find Buku with id=${id}.`,
       });
     }
   } catch (error) {
     res.status(500).send({
       status: "error",
-      message: "Error retrieving Book with id=" + id,
+      message: "Error retrieving Buku with id=" + id,
     });
   }
 }
@@ -84,7 +84,7 @@ async function updateBookController(req, res) {
       const updatedBook = await bookService.getById(id);
       res.send({
         status: "success",
-        message: "Book was updated successfully.",
+        message: "Buku was updated successfully.",
         data: {
           book: updatedBook,
         },
@@ -92,13 +92,13 @@ async function updateBookController(req, res) {
     } else {
       res.send({
         status: "error",
-        message: `Cannot update Book with id=${id}. Maybe Book was not found or req.body is empty!`,
+        message: `Cannot update Buku with id=${id}. Maybe Book was not found or req.body is empty!`,
       });
     }
   } catch (error) {
     res.status(500).send({
       status: "error",
-      message: `Error updating Book with id=${id}`,
+      message: `Error updating Buku with id=${id}`,
     });
   }
 }
@@ -112,18 +112,18 @@ async function deleteBookController(req, res) {
     if (result == 1) {
       res.send({
         status: "success",
-        message: "Book was deleted successfully!",
+        message: "Buku was deleted successfully!",
       });
     } else {
       res.send({
         status: "error",
-        message: `Cannot delete Book with id=${id}. Maybe Book was not found!`,
+        message: `Cannot delete Buku with id=${id}. Maybe Book was not found!`,
       });
     }
   } catch (error) {
     res.status(500).send({
       status: "error",
-      message: "Could not delete Book with id=" + id,
+      message: "Could not delete Buku with id=" + id,
     });
   }
 }
