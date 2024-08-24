@@ -42,7 +42,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       title: {
@@ -77,6 +77,12 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Books",
+      hooks: {
+        beforeCreate: (Books, options) => {
+          console.log("Creating book with publisher_id:", Books.publisher_id);
+          Books.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 

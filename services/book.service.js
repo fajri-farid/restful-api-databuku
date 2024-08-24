@@ -7,14 +7,28 @@ async function create(data) {
 
 async function getAll() {
   const booksList = await db.Books.findAll({
-    include: db.Authors, // Menggunakan objek model Authors secara langsung
+    include: [
+      {
+        model: db.Publishers, // Include model Publishers
+      },
+      {
+        model: db.Prices, // Include model Prices
+      },
+    ],
   });
   return booksList;
 }
 
 async function getById(id) {
   const book = await db.Books.findByPk(id, {
-    include: db.Authors, // Menggunakan objek model Authors secara langsung
+    include: [
+      {
+        model: db.Publishers, // Include model Publishers
+      },
+      {
+        model: db.Prices, // Include model Prices
+      },
+    ],
   });
   return book;
 }

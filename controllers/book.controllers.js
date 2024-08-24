@@ -4,10 +4,10 @@ async function createBookController(req, res) {
   try {
     const data = req.body;
 
-    if (!data.title || !data.releaseYear || !data.synopsis || !data.authorId) {
+    if (!data) {
       return res.status(400).send({
         status: "error",
-        message: "Content can not be empty!",
+        message: "Data payload is missing",
       });
     }
 
@@ -15,7 +15,7 @@ async function createBookController(req, res) {
 
     res.send({
       status: "success",
-      message: "Book berhasil dibuat!",
+      message: "book berhasil dibuat!",
       data: {
         book: bookData,
       },
@@ -23,7 +23,8 @@ async function createBookController(req, res) {
   } catch (error) {
     res.status(500).send({
       status: "error",
-      message: error.message || "Some error occurred while creating the Book.",
+      message: error.message,
+      details: error.message,
     });
   }
 }
