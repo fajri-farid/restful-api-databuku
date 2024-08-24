@@ -13,6 +13,7 @@ const languageRouter = require("./routes/language.routes");
 const tagsRouter = require("./routes/tags.routes");
 const storeRouter = require("./routes/store.routes");
 const bookLanguageRouter = require("./routes/book-language.routes");
+const bookTagsRouter = require("./routes/book-tags.routes");
 
 const app = express();
 const PORT = 8000;
@@ -40,6 +41,7 @@ app.use("/language", languageRouter);
 app.use("/tags", tagsRouter);
 app.use("/store", storeRouter);
 app.use("/book-language", bookLanguageRouter);
+app.use("/book-tags", bookTagsRouter);
 
 // Mulai server
 app.listen(PORT, () => {
