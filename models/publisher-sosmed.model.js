@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
   // class nama-table
-  class Publisher_Sosmed extends Model {
+  class Publisher_Sosmeds extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,24 +13,22 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Publisher_Sosmed.belongsTo(models.Publishers, {
+      Publisher_Sosmeds.belongsTo(models.Publishers, {
         foreignKey: "publisher_id",
       });
 
-      Publisher_Sosmed.belongsTo(models.Social_Media, {
+      Publisher_Sosmeds.belongsTo(models.Social_Media, {
         foreignKey: "sosial_media_id",
       });
-
-      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
   // name-table.init
-  Publisher_Sosmed.init(
+  Publisher_Sosmeds.init(
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       username: {
@@ -56,9 +54,14 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      modelName: "Publisher_Sosmed", // nama model
+      modelName: "Publisher_Sosmeds", // nama model
+      hooks: {
+        beforeCreate: (Publisher_Sosmeds) => {
+          Publisher_Sosmeds.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 
-  return Publisher_Sosmed; // return <nama table>
+  return Publisher_Sosmeds; // return <nama table>
 };

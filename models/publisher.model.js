@@ -18,7 +18,8 @@ module.exports = (sequelize, Sequelize) => {
       // belongs to
       Publishers.hasMany(models.Books, { foreignKey: "publisher_id" });
 
-      Publishers.hasMany(models.Publisher_Sosmed, {
+      Publishers.belongsToMany(models.Social_Media, {
+        through: "Publisher_Sosmeds",
         foreignKey: "publisher_id",
       });
     }
