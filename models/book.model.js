@@ -11,10 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       // Books.belongsTo(models.Authors, { foreignKey: "authorId" });\
-
-      Books.hasMany(models.Book_Language, { foreignKey: "book_id" });
       // Books.hasMany(models.Author_Books, { foreignKey: "book_id" });
-      Books.hasOne(models.Book_Tags, { foreignKey: "book_id" });
       Books.hasMany(models.Reviews, { foreignKey: "book_id" });
       Books.hasMany(models.Book_Store, { foreignKey: "book_id" });
 
@@ -26,6 +23,21 @@ module.exports = (sequelize, Sequelize) => {
         through: "Author_Books",
         foreignKey: "book_id",
       });
+
+      Books.belongsToMany(models.Languages, {
+        through: "Book_Language",
+        foreignKey: "book_id",
+      });
+
+      Books.belongsToMany(models.Tags, {
+        through: "Book_Tags",
+        foreignKey: "book_id",
+      });
+
+      Books.belongsToMany(models.Stores, {
+        through: "Book_Store",
+        foreignKey: "book_id",
+      });
     }
   }
 
@@ -33,7 +45,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       title: {
@@ -68,6 +80,12 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Books",
+      hooks: {
+        beforeCreate: (Books, options) => {
+          console.log("Creating book with publisher_id:", Books.publisher_id);
+          Books.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 

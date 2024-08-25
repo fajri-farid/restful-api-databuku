@@ -8,6 +8,15 @@ const authorContactRouter = require("./routes/author-contact.routes");
 const publisherContactRouter = require("./routes/publisher-contact.routes");
 const userRouter = require("./routes/user.routes");
 const publisherRouter = require("./routes/publisher.routes");
+const priceRouter = require("./routes/price.routes");
+const languageRouter = require("./routes/language.routes");
+const tagsRouter = require("./routes/tags.routes");
+const storeRouter = require("./routes/store.routes");
+const bookLanguageRouter = require("./routes/book-language.routes");
+const bookTagsRouter = require("./routes/book-tags.routes");
+const authorSosmedRouter = require("./routes/author-sosmed.routes");
+const publisherSosmedRouter = require("./routes/publisher-sosmed.routes");
+const authorBookRouter = require("./routes/author-book.routes");
 
 const app = express();
 const PORT = 8000;
@@ -30,6 +39,15 @@ app.use("/author-contact", authorContactRouter);
 app.use("/publisher-contact", publisherContactRouter);
 app.use("/user", userRouter);
 app.use("/publisher", publisherRouter);
+app.use("/price", priceRouter);
+app.use("/language", languageRouter);
+app.use("/tags", tagsRouter);
+app.use("/store", storeRouter);
+app.use("/book-language", bookLanguageRouter);
+app.use("/book-tags", bookTagsRouter);
+app.use("/author-sosmed", authorSosmedRouter);
+app.use("/publisher-sosmed", publisherSosmedRouter);
+app.use("/author-book", authorBookRouter);
 
 // Mulai server
 app.listen(PORT, () => {

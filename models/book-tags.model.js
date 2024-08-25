@@ -11,7 +11,8 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Book_Tags.hasOne(models.Tags, { foreignKey: "tag_id" });
+      // Book_Tags.hasOne(models.Tags, { foreignKey: "tag_id" });
+      Book_Tags.belongsTo(models.Tags, { foreignKey: "tag_id" });
       Book_Tags.belongsTo(models.Books, { foreignKey: "book_id" });
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
@@ -21,7 +22,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       book_id: {
@@ -44,6 +45,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Book_Tags",
+      hooks: {
+        beforeCreate: (Book_Tags) => {
+          Book_Tags.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 

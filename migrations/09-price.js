@@ -14,9 +14,9 @@ module.exports = {
         type: Sequelize.STRING,
         primaryKey: true,
       },
-      additional_info: {
-        type: Sequelize.TEXT,
-        allowNull: true,
+      price: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       currency_id: {
         type: Sequelize.STRING,

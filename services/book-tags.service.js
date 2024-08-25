@@ -1,47 +1,47 @@
 const db = require("../models/index");
 
 async function create(data) {
-  const book = await db.Books.create(data);
-  return book;
+  const book_tag = await db.Book_Tags.create(data);
+  return book_tag;
 }
 
 async function getAll() {
-  const booksList = await db.Books.findAll({
+  const bookTagsList = await db.Book_Tags.findAll({
     include: [
       {
-        model: db.Publishers, // Include model Publishers
+        model: db.Books,
       },
       {
-        model: db.Prices, // Include model Prices
+        model: db.Tags,
       },
     ],
   });
-  return booksList;
+  return bookTagsList;
 }
 
 async function getById(id) {
-  const book = await db.Books.findByPk(id, {
+  const book_tag = await db.Book_Tags.findByPk(id, {
     include: [
       {
-        model: db.Publishers, // Include model Publishers
+        model: db.Books,
       },
       {
-        model: db.Prices, // Include model Prices
+        model: db.Tags,
       },
     ],
   });
-  return book;
+  return book_tag;
 }
 
 async function update(id, data) {
-  const result = await db.Books.update(data, {
+  const result = await db.Book_Tags.update(data, {
     where: { id: id },
   });
   return result[0];
 }
 
 async function deleteById(id) {
-  const result = await db.Books.destroy({
+  const result = await db.Book_Tags.destroy({
     where: { id: id },
   });
   return result;

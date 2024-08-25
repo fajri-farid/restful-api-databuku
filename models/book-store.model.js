@@ -14,9 +14,7 @@ module.exports = (sequelize, Sequelize) => {
       // define association here
       //   ex:
       Book_Store.belongsTo(models.Books, { foreignKey: "book_id" });
-
       Book_Store.belongsTo(models.Stores, { foreignKey: "store_id" });
-      //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
