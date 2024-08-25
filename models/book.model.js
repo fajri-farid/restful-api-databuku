@@ -23,14 +23,17 @@ module.exports = (sequelize, Sequelize) => {
         through: "Author_Books",
         foreignKey: "book_id",
       });
+
       Books.belongsToMany(models.Languages, {
         through: "Book_Language",
         foreignKey: "book_id",
       });
+
       Books.belongsToMany(models.Tags, {
         through: "Book_Tags",
         foreignKey: "book_id",
       });
+
       Books.belongsToMany(models.Stores, {
         through: "Book_Store",
         foreignKey: "book_id",
