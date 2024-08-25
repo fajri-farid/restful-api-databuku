@@ -1,3 +1,4 @@
+const { Model } = require("sequelize");
 const db = require("../models/index");
 
 async function create(data) {
@@ -6,7 +7,16 @@ async function create(data) {
 }
 
 async function getAll() {
-  const authorSosmedList = await db.Author_Sosmed.findAll();
+  const authorSosmedList = await db.Author_Sosmed.findAll({
+    include: [
+      {
+        model: db.Social_Media,
+      },
+      {
+        model: db.Authors,
+      },
+    ],
+  });
   return authorSosmedList;
 }
 

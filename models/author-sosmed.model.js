@@ -53,10 +53,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      modelName: "Author_Sosmed", // nama model
+      modelName: "Author_Sosmeds", // nama model
       hooks: {
-        beforeCreate: (Author_Sosmed) => {
-          Author_Sosmed.id = createId(); // Generate new ID before creating the record
+        beforeCreate: (Author_Sosmeds) => {
+          Author_Sosmeds.id = createId(); // Generate new ID before creating the record
         },
       },
     }
