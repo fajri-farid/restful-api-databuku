@@ -22,10 +22,6 @@ module.exports = {
         type: Sequelize.DECIMAL,
         allowNull: false,
       },
-      review_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
       user_id: {
         type: Sequelize.STRING,
         allowNull: false,
