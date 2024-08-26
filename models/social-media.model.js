@@ -42,8 +42,8 @@ module.exports = (sequelize, Sequelize) => {
       sequelize,
       modelName: "Social_Media",
       hooks: {
-        beforeCreate: (role) => {
-          role.id = createId(); // Generate new ID before creating the record
+        beforeCreate: (Social_Media) => {
+          Social_Media.id = createId(); // Generate new ID before creating the record
         },
       },
     }

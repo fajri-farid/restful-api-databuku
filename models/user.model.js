@@ -82,6 +82,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Users",
+      hooks: {
+        beforeCreate: (Users) => {
+          Users.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 

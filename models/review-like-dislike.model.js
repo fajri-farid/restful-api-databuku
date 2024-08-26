@@ -28,7 +28,7 @@ module.exports = (sequelize, Sequelize) => {
     {
       id: {
         type: Sequelize.STRING,
-        defaultValue: createId(), // Menggunakan cuid sebagai default ID
+        // defaultValue: createId(), // Menggunakan cuid sebagai default ID
         primaryKey: true,
       },
       is_like: {
@@ -55,6 +55,11 @@ module.exports = (sequelize, Sequelize) => {
     {
       sequelize,
       modelName: "Review_Like_Dislikes", // nama model
+      hooks: {
+        beforeCreate: (Review_Like_Dislikes) => {
+          Review_Like_Dislikes.id = createId(); // Generate new ID before creating the record
+        },
+      },
     }
   );
 

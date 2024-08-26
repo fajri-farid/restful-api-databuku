@@ -32,8 +32,8 @@ module.exports = (sequelize, Sequelize) => {
       sequelize,
       modelName: "Roles",
       hooks: {
-        beforeCreate: (role) => {
-          role.id = createId(); // Generate new ID before creating the record
+        beforeCreate: (Roles) => {
+          Roles.id = createId(); // Generate new ID before creating the record
         },
       },
     }
