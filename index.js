@@ -21,6 +21,7 @@ const reviewRouter = require("./routes/review.routes");
 const reviewReplyRouter = require("./routes/review-reply.routes");
 const reviewLikeDislikeRouter = require("./routes/review-like-dislike.routes");
 const reviewReplyLikeDislikeRouter = require("./routes/review-reply-like-dislike.routes");
+const bookStoreRouter = require("./routes/book-store.routes");
 
 const app = express();
 const PORT = 8000;
@@ -56,6 +57,7 @@ app.use("/review", reviewRouter);
 app.use("/review/replies", reviewReplyRouter);
 app.use("/review/reactions", reviewLikeDislikeRouter);
 app.use("/review/replies/reactions", reviewReplyLikeDislikeRouter);
+app.use("/book-store", bookStoreRouter);
 
 // Mulai server
 app.listen(PORT, () => {

@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
       //   ex:
       //   Authors.hasMany(models.Books, { foreignKey: "authorId" });
       Stores.belongsToMany(models.Books, {
-        through: "Book_Stor",
+        through: "Book_Stores",
         foreignKey: "store_id",
       });
     }
