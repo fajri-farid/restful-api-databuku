@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Review_Replies.hasMany(models.Review_Reply_Like_Dislike, {
+      Review_Replies.hasMany(models.Review_Reply_Like_Dislikes, {
         foreignKey: "review_reply_id",
       });
 
