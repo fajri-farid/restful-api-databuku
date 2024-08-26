@@ -17,9 +17,9 @@ module.exports = (sequelize, Sequelize) => {
       Reviews.belongsTo(models.Books, { foreignKey: "book_id" });
 
       // belongs to
-      Reviews.hasMany(models.Review_Reply, { foreignKey: "review_id" });
+      Reviews.hasMany(models.Review_Replies, { foreignKey: "review_id" });
 
-      Reviews.belongsTo(models.Review_Like_Dislike, {
+      Reviews.hasMany(models.Review_Like_Dislikes, {
         foreignKey: "review_id",
       });
     }
@@ -39,10 +39,6 @@ module.exports = (sequelize, Sequelize) => {
       },
       rating: {
         type: Sequelize.DECIMAL,
-        allowNull: false,
-      },
-      review_date: {
-        type: Sequelize.DATE,
         allowNull: false,
       },
       user_id: {

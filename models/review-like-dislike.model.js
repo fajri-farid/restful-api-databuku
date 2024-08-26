@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
   // class nama-table
-  class Review_Like_Dislike extends Model {
+  class Review_Like_Dislikes extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,15 +13,18 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       // ex:
-      Review_Like_Dislike.belongsTo(models.Users, { foreignKey: "user_id" });
+      Review_Like_Dislikes.belongsTo(models.Users, { foreignKey: "user_id" });
 
+      Review_Like_Dislikes.belongsTo(models.Reviews, {
+        foreignKey: "review_id",
+      });
       // Review_Like_Dislike.hasMany(models.Books, { foreignKey: "review_id" });
       //   Books.belongsTo(models.Authors, { foreignKey: "authorId" });
     }
   }
 
   // name-table.init
-  Review_Like_Dislike.init(
+  Review_Like_Dislikes.init(
     {
       id: {
         type: Sequelize.STRING,
@@ -51,9 +54,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      modelName: "Review_Like_Dislike", // nama model
+      modelName: "Review_Like_Dislikes", // nama model
     }
   );
 
-  return Review_Like_Dislike; // return <nama table>
+  return Review_Like_Dislikes; // return <nama table>
 };

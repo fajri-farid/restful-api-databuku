@@ -3,7 +3,7 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
   // class nama-table
-  class Book_Store extends Model {
+  class Book_Stores extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -13,13 +13,13 @@ module.exports = (sequelize, Sequelize) => {
     static associate(models) {
       // define association here
       //   ex:
-      Book_Store.belongsTo(models.Books, { foreignKey: "book_id" });
-      Book_Store.belongsTo(models.Stores, { foreignKey: "store_id" });
+      Book_Stores.belongsTo(models.Books, { foreignKey: "book_id" });
+      Book_Stores.belongsTo(models.Stores, { foreignKey: "store_id" });
     }
   }
 
   // name-table.init
-  Book_Store.init(
+  Book_Stores.init(
     {
       id: {
         type: Sequelize.STRING,
@@ -45,9 +45,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     {
       sequelize,
-      modelName: "Book_Store", // nama model
+      modelName: "Book_Stores", // nama model
     }
   );
 
-  return Book_Store; // return <nama table>
+  return Book_Stores; // return <nama table>
 };

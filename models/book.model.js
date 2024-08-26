@@ -13,7 +13,6 @@ module.exports = (sequelize, Sequelize) => {
       // Books.belongsTo(models.Authors, { foreignKey: "authorId" });\
       // Books.hasMany(models.Author_Books, { foreignKey: "book_id" });
       Books.hasMany(models.Reviews, { foreignKey: "book_id" });
-      Books.hasMany(models.Book_Store, { foreignKey: "book_id" });
 
       // belongsto
       Books.belongsTo(models.Prices, { foreignKey: "price_id" });
@@ -35,7 +34,7 @@ module.exports = (sequelize, Sequelize) => {
       });
 
       Books.belongsToMany(models.Stores, {
-        through: "Book_Store",
+        through: "Book_Stores",
         foreignKey: "book_id",
       });
     }
