@@ -14,14 +14,14 @@ module.exports = {
      */
 
     return queryInterface.bulkInsert(
-      "Reviews",
+      "Review_Replies",
       [
         {
-          id: "j22baqfqu14txg4g06iiu68a",
-          comment: "keren banget",
-          rating: 5,
+          id: "ztntxdzejg8oz88az21syliq",
+          comment:
+            "sepertinya nggk bagus amat juga dehh, soalnya ada beberapa bab yang menurut saya agak kurang untuk dibaca orang awam",
           user_id: "h65jnrfnyquv74clfww3tpj1",
-          book_id: "b2ztrq8h5e8w6p3wf24maxac",
+          review_id: "j22baqfqu14txg4g06iiu68a",
         },
         // klw mau tambah seeder dengan cuid2 sebagai id
         // {
@@ -40,6 +40,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-    return queryInterface.bulkDelete("Reviews", null, {});
+    return queryInterface.bulkDelete("Review_Replies", null, {});
   },
 };
