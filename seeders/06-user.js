@@ -29,6 +29,19 @@ module.exports = {
           password: "password123",
           role_id: "cybyqqzobgiueym5vmbng2w2",
         },
+        {
+          id: "ns83sxoj463z4ud40x3cqooy",
+          first_name: "admin",
+          last_name: "123",
+          username: "admin123",
+          bio: null,
+          birth_date: null,
+          address: null,
+          profile_pic: null,
+          email: "admin@gmail.com",
+          password: "hello123",
+          role_id: "hzxord9rxewld4ys3oihbnm8",
+        },
         // klw mau tambah seeder dengan cuid2 sebagai id
         // {
         //   id: createId(),
