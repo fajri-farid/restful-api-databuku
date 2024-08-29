@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 const authorRouter = require("./routes/author.route");
 const booksRouter = require("./routes/book.routes");
@@ -25,6 +26,7 @@ const reviewLikeDislikeRouter = require("./routes/review-like-dislike.routes");
 const reviewReplyLikeDislikeRouter = require("./routes/review-reply-like-dislike.routes");
 const bookStoreRouter = require("./routes/book-store.routes");
 const register = require("./routes/register.routes");
+const login = require("./routes/login.routes");
 
 const app = express();
 dotenv.config();
@@ -34,13 +36,15 @@ const PORT = 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cookieParser(process.env.SECRET));
 app.use(
   session({
     secret: process.env.SECRET,
     saveUninitialized: false,
     resave: false,
     cookie: {
-      maxAge: 60000,
+      name: "jwt",
+      maxAge: 60000 * 10, // 10 menit
     },
   })
 );
@@ -74,6 +78,7 @@ app.use("/review/reactions", reviewLikeDislikeRouter);
 app.use("/review/replies/reactions", reviewReplyLikeDislikeRouter);
 app.use("/book-store", bookStoreRouter);
 app.use("/register", register);
+app.use("/login", login);
 
 // Mulai server
 app.listen(PORT, () => {

@@ -10,6 +10,11 @@ async function getAll() {
   return userList;
 }
 
+async function getByEmail(email) {
+  const user = await db.Users.findOne({ where: { email } });
+  return user;
+}
+
 async function getById(id) {
   const user = await db.Users.findByPk(id);
   return user;
@@ -35,4 +40,5 @@ module.exports = {
   update,
   deleteById,
   getById,
+  getByEmail,
 };

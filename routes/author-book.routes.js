@@ -6,9 +6,10 @@ const {
   deleteAuthorBookControllerById,
   updateAuthorBookControllerById,
 } = require("../controllers/author-book.controllers");
+const checkAuth = require("./../middleware/login/auth-login.middleware");
 
 router.post("/", postAuthorBookController);
-router.get("/", getAllAuthorBookController);
+router.get("/", checkAuth, getAllAuthorBookController);
 router.delete("/:id", deleteAuthorBookControllerById);
 router.put("/:id", updateAuthorBookControllerById);
 
