@@ -1,4 +1,6 @@
 const express = require("express");
+const session = require("express-session");
+const dotenv = require("dotenv");
 const authorRouter = require("./routes/author.route");
 const booksRouter = require("./routes/book.routes");
 const roleRouter = require("./routes/role.routes");
@@ -22,13 +24,26 @@ const reviewReplyRouter = require("./routes/review-reply.routes");
 const reviewLikeDislikeRouter = require("./routes/review-like-dislike.routes");
 const reviewReplyLikeDislikeRouter = require("./routes/review-reply-like-dislike.routes");
 const bookStoreRouter = require("./routes/book-store.routes");
+const register = require("./routes/register.routes");
 
 const app = express();
+dotenv.config();
 const PORT = 8000;
 
 // Middleware untuk parsing JSON dan URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+      maxAge: 60000,
+    },
+  })
+);
 
 // Route utama (/)
 app.get("/", (req, res) => {
@@ -58,6 +73,7 @@ app.use("/review/replies", reviewReplyRouter);
 app.use("/review/reactions", reviewLikeDislikeRouter);
 app.use("/review/replies/reactions", reviewReplyLikeDislikeRouter);
 app.use("/book-store", bookStoreRouter);
+app.use("/register", register);
 
 // Mulai server
 app.listen(PORT, () => {
