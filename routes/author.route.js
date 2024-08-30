@@ -7,11 +7,14 @@ const {
   updateAuthorController,
   getAuthorByIdController,
 } = require("../controllers/author.controllers");
+const {
+  checkAuthAdmin,
+} = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postAuthorController);
+router.post("/", checkAuthAdmin, postAuthorController);
 router.get("/", getAllAuthorController);
 router.get("/:id", getAuthorByIdController);
-router.delete("/:id", deleteAuthorController);
-router.put("/:id", updateAuthorController);
+router.delete("/:id", checkAuthAdmin, deleteAuthorController);
+router.put("/:id", checkAuthAdmin, updateAuthorController);
 
 module.exports = router;

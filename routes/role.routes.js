@@ -6,10 +6,13 @@ const {
   deleteRoleControllerById,
   updateRoleControllerById,
 } = require("../controllers/role.controllers");
+const {
+  checkAuthAdmin,
+} = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postRoleController);
+router.post("/", checkAuthAdmin, postRoleController);
 router.get("/", getAllRoleController);
-router.delete("/:id", deleteRoleControllerById);
-router.put("/:id", updateRoleControllerById);
+router.delete("/:id", checkAuthAdmin, deleteRoleControllerById);
+router.put("/:id", checkAuthAdmin, updateRoleControllerById);
 
 module.exports = router;

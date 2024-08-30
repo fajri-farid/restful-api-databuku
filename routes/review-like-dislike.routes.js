@@ -6,10 +6,11 @@ const {
   deleteReviewLikeDislikeControllerById,
   updateReviewLikeDislikeControllerById,
 } = require("../controllers/review-like-dislike.controllers");
+const { checkAuth } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postReviewLikeDislikeController);
+router.post("/", checkAuth, postReviewLikeDislikeController);
 router.get("/", getAllReviewLikeDislikeController);
-router.delete("/:id", deleteReviewLikeDislikeControllerById);
-router.put("/:id", updateReviewLikeDislikeControllerById);
+router.delete("/:id", checkAuth, deleteReviewLikeDislikeControllerById);
+router.put("/:id", checkAuth, updateReviewLikeDislikeControllerById);
 
 module.exports = router;

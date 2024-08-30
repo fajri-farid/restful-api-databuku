@@ -6,10 +6,13 @@ const {
   deleteSocialMediaControllerById,
   updateSocialMediaControllerById,
 } = require("../controllers/social-media.controllers");
+const {
+  checkAuthAdmin,
+} = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postSocialMediaController);
+router.post("/", checkAuthAdmin, postSocialMediaController);
 router.get("/", getAllSocialMediaController);
-router.delete("/:id", deleteSocialMediaControllerById);
-router.put("/:id", updateSocialMediaControllerById);
+router.delete("/:id", checkAuthAdmin, deleteSocialMediaControllerById);
+router.put("/:id", checkAuthAdmin, updateSocialMediaControllerById);
 
 module.exports = router;

@@ -6,10 +6,13 @@ const {
   deleteTagControllerById,
   updateTagControllerById,
 } = require("../controllers/tags.controllers");
+const {
+  checkAuthAdmin,
+} = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postTagController);
+router.post("/", checkAuthAdmin, postTagController);
 router.get("/", getAllTagController);
-router.delete("/:id", deleteTagControllerById);
-router.put("/:id", updateTagControllerById);
+router.delete("/:id", checkAuthAdmin, deleteTagControllerById);
+router.put("/:id", checkAuthAdmin, updateTagControllerById);
 
 module.exports = router;

@@ -11,9 +11,9 @@ const {
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postAuthorBookController);
-router.get("/", checkAuthAdmin, getAllAuthorBookController);
-router.delete("/:id", deleteAuthorBookControllerById);
-router.put("/:id", updateAuthorBookControllerById);
+router.post("/", checkAuthAdmin, postAuthorBookController);
+router.get("/", getAllAuthorBookController);
+router.delete("/:id", checkAuthAdmin, deleteAuthorBookControllerById);
+router.put("/:id", checkAuthAdmin, updateAuthorBookControllerById);
 
 module.exports = router;

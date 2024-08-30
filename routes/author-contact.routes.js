@@ -6,10 +6,14 @@ const {
   deleteAuthorContactControllerById,
   updateAuthorContactControllerById,
 } = require("../controllers/author-contact.controllers");
+const {
+  checkAuth,
+  checkAuthAdmin,
+} = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postAuthorContactController);
+router.post("/", checkAuthAdmin, postAuthorContactController);
 router.get("/", getAllAuthorContactController);
-router.delete("/:id", deleteAuthorContactControllerById);
-router.put("/:id", updateAuthorContactControllerById);
+router.delete("/:id", checkAuthAdmin, deleteAuthorContactControllerById);
+router.put("/:id", checkAuthAdmin, updateAuthorContactControllerById);
 
 module.exports = router;

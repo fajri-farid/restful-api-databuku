@@ -6,10 +6,13 @@ const {
   deleteBookTagsControllerById,
   updateBookTagsControllerById,
 } = require("../controllers/book-tags.controllers");
+const {
+  checkAuthAdmin,
+} = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postBookTagsController);
+router.post("/", checkAuthAdmin, postBookTagsController);
 router.get("/", getAllBookTagsController);
-router.delete("/:id", deleteBookTagsControllerById);
-router.put("/:id", updateBookTagsControllerById);
+router.delete("/:id", checkAuthAdmin, deleteBookTagsControllerById);
+router.put("/:id", checkAuthAdmin, updateBookTagsControllerById);
 
 module.exports = router;

@@ -6,10 +6,11 @@ const {
   deleteReviewReplyControllerById,
   updateReviewReplyControllerById,
 } = require("../controllers/review-reply.controllers");
+const { checkAuth } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", postReviewReplyController);
+router.post("/", checkAuth, postReviewReplyController);
 router.get("/", getAllReviewReplyController);
-router.delete("/:id", deleteReviewReplyControllerById);
-router.put("/:id", updateReviewReplyControllerById);
+router.delete("/:id", checkAuth, deleteReviewReplyControllerById);
+router.put("/:id", checkAuth, updateReviewReplyControllerById);
 
 module.exports = router;
