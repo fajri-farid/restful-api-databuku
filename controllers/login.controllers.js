@@ -31,6 +31,7 @@ async function loginUserController(req, res) {
         id: findUser.id,
         email: findUser.email,
         username: findUser.username,
+        role_id: findUser.role_id,
       },
       process.env.SECRET,
       { expiresIn: "1h" } // Atur waktu kedaluwarsa token

@@ -31,6 +31,8 @@ function checkAuthAdmin(req, res, next) {
       return res.status(403).send({ msg: "Invalid token" });
     }
 
+    console.log("User Role ID:", user.role_id); // Debug log
+
     if (user.role_id === "hzxord9rxewld4ys3oihbnm8") {
       // Sesuaikan dengan role_id admin
       req.user = user;
