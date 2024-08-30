@@ -37,17 +37,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser(process.env.SECRET));
-app.use(
-  session({
-    secret: process.env.SECRET,
-    saveUninitialized: false,
-    resave: false,
-    cookie: {
-      name: "jwt",
-      maxAge: 60000 * 10, // 10 menit
-    },
-  })
-);
 
 // Route utama (/)
 app.get("/", (req, res) => {
