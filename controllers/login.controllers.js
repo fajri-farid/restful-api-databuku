@@ -1,19 +1,6 @@
 const userService = require("../services/user.service");
 const jwt = require("jsonwebtoken");
 
-// async function getUserController(req, res) {
-//   // Cek apakah user sudah login
-//   if (req.session.user) {
-//     console.log("User Session:", req.session.user);
-//     res.status(200).send({
-//       msg: "User is logged in",
-//       user: req.session.user,
-//     });
-//   } else {
-//     res.status(401).send({ msg: "User not authenticated" });
-//   }
-// }
-
 async function loginUserController(req, res) {
   const { email, password } = req.body;
 
@@ -34,7 +21,7 @@ async function loginUserController(req, res) {
         role_id: findUser.role_id,
       },
       process.env.SECRET,
-      { expiresIn: "1h" } // Atur waktu kedaluwarsa token
+      { expiresIn: "1h" } // Atur waktu kedaluwarsa token selama 1 jam
     );
 
     const response = {
