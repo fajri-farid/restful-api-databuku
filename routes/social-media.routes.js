@@ -10,8 +10,21 @@ const {
   checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
+const {
+  createSocialMediaValidationSchema,
+  putSocialMediaValidationSchema,
+} = require("../middleware/validation/social-media.validation.middleware.js");
+const { checkSchema } = require("express-validator");
+const handleValidationErrors = require("../middleware/validationResult.middleware.js");
 
-router.post("/", checkAuth, checkAuthAdmin, postSocialMediaController);
+router.post(
+  "/",
+  checkAuth,
+  checkAuthAdmin,
+  checkSchema(createSocialMediaValidationSchema),
+  handleValidationErrors,
+  postSocialMediaController
+);
 router.get("/", getAllSocialMediaController);
 router.delete(
   "/:id",
@@ -19,6 +32,13 @@ router.delete(
   checkAuthAdmin,
   deleteSocialMediaControllerById
 );
-router.put("/:id", checkAuth, checkAuthAdmin, updateSocialMediaControllerById);
+router.put(
+  "/:id",
+  checkAuth,
+  checkAuthAdmin,
+  checkSchema(putSocialMediaValidationSchema),
+  handleValidationErrors,
+  updateSocialMediaControllerById
+);
 
 module.exports = router;

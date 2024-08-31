@@ -10,8 +10,21 @@ const {
   checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
+const {
+  createAuthorContactValidationSchema,
+  putAuthorContactValidationSchema,
+} = require("../middleware/validation/author-contact.validation.middleware.js");
+const { checkSchema } = require("express-validator");
+const handleValidationErrors = require("../middleware/validationResult.middleware.js");
 
-router.post("/", checkAuth, checkAuthAdmin, postAuthorContactController);
+router.post(
+  "/",
+  checkAuth,
+  checkAuthAdmin,
+  checkSchema(createAuthorContactValidationSchema),
+  handleValidationErrors,
+  postAuthorContactController
+);
 router.get("/", getAllAuthorContactController);
 router.delete(
   "/:id",
@@ -23,6 +36,8 @@ router.put(
   "/:id",
   checkAuth,
   checkAuthAdmin,
+  checkSchema(putAuthorContactValidationSchema),
+  handleValidationErrors,
   updateAuthorContactControllerById
 );
 
