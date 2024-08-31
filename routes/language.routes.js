@@ -7,12 +7,13 @@ const {
   updateLanguageControllerById,
 } = require("../controllers/language.controllers");
 const {
+  checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", checkAuthAdmin, postLanguageController);
+router.post("/", checkAuth, checkAuthAdmin, postLanguageController);
 router.get("/", getAllLanguageController);
-router.delete("/:id", checkAuthAdmin, deleteLanguageControllerById);
-router.put("/:id", checkAuthAdmin, updateLanguageControllerById);
+router.delete("/:id", checkAuth, checkAuthAdmin, deleteLanguageControllerById);
+router.put("/:id", checkAuth, checkAuthAdmin, updateLanguageControllerById);
 
 module.exports = router;

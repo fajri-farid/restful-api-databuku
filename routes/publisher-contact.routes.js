@@ -7,12 +7,23 @@ const {
   updatePublisherContactsControllerById,
 } = require("../controllers/publisher-contact.controllers");
 const {
+  checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", checkAuthAdmin, postPublisherContactsController);
+router.post("/", checkAuth, checkAuthAdmin, postPublisherContactsController);
 router.get("/", getAllPublisherContactsController);
-router.delete("/:id", checkAuthAdmin, deletePublisherContactsControllerById);
-router.put("/:id", checkAuthAdmin, updatePublisherContactsControllerById);
+router.delete(
+  "/:id",
+  checkAuth,
+  checkAuthAdmin,
+  deletePublisherContactsControllerById
+);
+router.put(
+  "/:id",
+  checkAuth,
+  checkAuthAdmin,
+  updatePublisherContactsControllerById
+);
 
 module.exports = router;

@@ -7,12 +7,23 @@ const {
   updatePublisherSosmedControllerById,
 } = require("../controllers/publisher-sosmed.controllers");
 const {
+  checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", checkAuthAdmin, postPublisherSosmedController);
+router.post("/", checkAuth, checkAuthAdmin, postPublisherSosmedController);
 router.get("/", getAllPublisherSosmedController);
-router.delete("/:id", checkAuthAdmin, deletePublisherSosmedControllerById);
-router.put("/:id", checkAuthAdmin, updatePublisherSosmedControllerById);
+router.delete(
+  "/:id",
+  checkAuth,
+  checkAuthAdmin,
+  deletePublisherSosmedControllerById
+);
+router.put(
+  "/:id",
+  checkAuth,
+  checkAuthAdmin,
+  updatePublisherSosmedControllerById
+);
 
 module.exports = router;
