@@ -8,13 +8,14 @@ const {
   updateStoreControllerById,
 } = require("../controllers/store.controllers");
 const {
+  checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", checkAuthAdmin, postStoreController);
+router.post("/", checkAuth, checkAuthAdmin, postStoreController);
 router.get("/", getAllStoreController);
 router.get("/:id", getStoreByIdController);
-router.delete("/:id", checkAuthAdmin, deleteStoreControllerById);
-router.put("/:id", checkAuthAdmin, updateStoreControllerById);
+router.delete("/:id", checkAuth, checkAuthAdmin, deleteStoreControllerById);
+router.put("/:id", checkAuth, checkAuthAdmin, updateStoreControllerById);
 
 module.exports = router;

@@ -8,13 +8,14 @@ const {
   getBookStoreByIdController,
 } = require("../controllers/book-store.controllers");
 const {
+  checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", checkAuthAdmin, postBookStoreController);
+router.post("/", checkAuth, checkAuthAdmin, postBookStoreController);
 router.get("/", getAllBookStoreController);
 router.get("/:id", getBookStoreByIdController);
-router.put("/:id", checkAuthAdmin, updateBookStoreController);
-router.delete("/:id", checkAuthAdmin, deleteBookStoreController);
+router.put("/:id", checkAuth, checkAuthAdmin, updateBookStoreController);
+router.delete("/:id", checkAuth, checkAuthAdmin, deleteBookStoreController);
 
 module.exports = router;

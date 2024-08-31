@@ -11,9 +11,14 @@ const {
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", checkAuthAdmin, postAuthorBookController);
-router.get("/", getAllAuthorBookController);
-router.delete("/:id", checkAuthAdmin, deleteAuthorBookControllerById);
-router.put("/:id", checkAuthAdmin, updateAuthorBookControllerById);
+router.post("/", checkAuth, checkAuthAdmin, postAuthorBookController);
+router.get("/", checkAuth, checkAuthAdmin, getAllAuthorBookController);
+router.delete(
+  "/:id",
+  checkAuth,
+  checkAuthAdmin,
+  deleteAuthorBookControllerById
+);
+router.put("/:id", checkAuth, checkAuthAdmin, updateAuthorBookControllerById);
 
 module.exports = router;

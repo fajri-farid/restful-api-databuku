@@ -7,12 +7,13 @@ const {
   updateCurrencyControllerById,
 } = require("../controllers/currency.controllers");
 const {
+  checkAuth,
   checkAuthAdmin,
 } = require("./../middleware/login/auth-login.middleware");
 
-router.post("/", checkAuthAdmin, postCurrencyController);
+router.post("/", checkAuth, checkAuthAdmin, postCurrencyController);
 router.get("/", getAllCurrencyController);
-router.delete("/:id", checkAuthAdmin, deleteCurrencyControllerById);
-router.put("/:id", checkAuthAdmin, updateCurrencyControllerById);
+router.delete("/:id", checkAuth, checkAuthAdmin, deleteCurrencyControllerById);
+router.put("/:id", checkAuth, checkAuthAdmin, updateCurrencyControllerById);
 
 module.exports = router;
