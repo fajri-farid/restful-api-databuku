@@ -99,13 +99,15 @@ const createUserValidationSchema = {
     },
   },
   role_id: {
-    optional: true,
+    notEmpty: {
+      errorMessage: "price cannot be empty",
+    },
     isString: {
-      errorMessage: "Invalid URL format for profile picture",
+      errorMessage: "role_id must be a string",
     },
     isLength: {
       options: { max: 50 },
-      errorMessage: "profile pic at most 50  characters",
+      errorMessage: "role_id at most 50  characters",
     },
   },
 };
@@ -209,13 +211,15 @@ const putUserValidationSchema = {
     },
   },
   role_id: {
-    optional: true,
+    notEmpty: {
+      errorMessage: "price cannot be empty",
+    },
     isString: {
-      errorMessage: "Invalid URL format for profile picture",
+      errorMessage: "role_id must be a string",
     },
     isLength: {
       options: { max: 50 },
-      errorMessage: "profile pic at most 50  characters",
+      errorMessage: "role_id at most 50  characters",
     },
   },
 };
