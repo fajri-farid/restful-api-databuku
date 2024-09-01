@@ -9,29 +9,30 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable("books", {
+    await queryInterface.createTable("Review_Replies", {
       id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+        type: Sequelize.STRING,
         primaryKey: true,
       },
-      title: {
+      comment: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      releaseYear: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      synopsis: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      authorId: {
-        type: Sequelize.INTEGER,
+      user_id: {
+        type: Sequelize.STRING,
         allowNull: false,
         references: {
-          model: "authors",
+          model: "Users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      review_id: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+          model: "Reviews",
           key: "id",
         },
         onUpdate: "CASCADE",
@@ -57,6 +58,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable("books");
+    await queryInterface.dropTable("Review_Replies");
   },
 };
