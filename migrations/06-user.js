@@ -16,19 +16,19 @@ module.exports = {
         primaryKey: true,
       },
       first_name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       last_name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       username: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       email: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
       bio: {
@@ -36,23 +36,23 @@ module.exports = {
         allowNull: true,
       },
       birth_date: {
-        type: Sequelize.TEXT,
+        type: Sequelize.DATE,
         allowNull: true,
       },
       address: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING(255),
         allowNull: true,
       },
       profile_pic: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       password: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       role_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: true,
         // reference table
         references: {

@@ -52,11 +52,11 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: true,
       },
       birth_date: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: true,
       },
       address: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: true,
       },
       profile_pic: {

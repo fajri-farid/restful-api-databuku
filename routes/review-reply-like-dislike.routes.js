@@ -6,7 +6,7 @@ const {
   deleteReviewReplyLikeDislikeControllerById,
   updateReviewReplyLikeDislikeControllerById,
 } = require("../controllers/review-reply-like-dislike.controllers");
-const { checkAuth } = require("./../middleware/login/auth-login.middleware");
+const { checkAuth } = require("./../middleware/auth/auth-login.middleware");
 
 router.post("/", checkAuth, postReviewReplyLikeDislikeController);
 router.get("/", getAllReviewReplyLikeDislikeController);

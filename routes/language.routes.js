@@ -9,7 +9,7 @@ const {
 const {
   checkAuth,
   checkAuthAdmin,
-} = require("./../middleware/login/auth-login.middleware");
+} = require("./../middleware/auth/auth-login.middleware");
 
 router.post("/", checkAuth, checkAuthAdmin, postLanguageController);
 router.get("/", getAllLanguageController);
