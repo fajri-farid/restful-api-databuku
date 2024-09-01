@@ -15,11 +15,11 @@ module.exports = {
         primaryKey: true,
       },
       comment: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1000),
         allowNull: false,
       },
       rating: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       user_id: {
