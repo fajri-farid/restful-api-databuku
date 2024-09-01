@@ -6,7 +6,7 @@ const {
   deleteReviewControllerById,
   updateReviewControllerById,
 } = require("../controllers/review.controllers");
-const { checkAuth } = require("./../middleware/login/auth-login.middleware");
+const { checkAuth } = require("./../middleware/auth/auth-login.middleware");
 
 router.post("/", checkAuth, postReviewController);
 router.get("/", getAllReviewController);

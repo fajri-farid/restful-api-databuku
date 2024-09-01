@@ -9,11 +9,31 @@ const {
 const {
   checkAuth,
   checkAuthAdmin,
-} = require("./../middleware/login/auth-login.middleware");
+} = require("./../middleware/auth/auth-login.middleware");
+const {
+  createLanguageValidationSchema,
+  putLanguageValidationSchema,
+} = require("../middleware/validation/language.validation.middleware.js");
+const { checkSchema } = require("express-validator");
+const handleValidationErrors = require("../middleware/validationResult.middleware.js");
 
-router.post("/", checkAuth, checkAuthAdmin, postLanguageController);
+router.post(
+  "/",
+  checkAuth,
+  checkAuthAdmin,
+  checkSchema(createLanguageValidationSchema),
+  handleValidationErrors,
+  postLanguageController
+);
 router.get("/", getAllLanguageController);
 router.delete("/:id", checkAuth, checkAuthAdmin, deleteLanguageControllerById);
-router.put("/:id", checkAuth, checkAuthAdmin, updateLanguageControllerById);
+router.put(
+  "/:id",
+  checkAuth,
+  checkAuthAdmin,
+  checkSchema(putLanguageValidationSchema),
+  handleValidationErrors,
+  updateLanguageControllerById
+);
 
 module.exports = router;

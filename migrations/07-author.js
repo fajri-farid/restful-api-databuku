@@ -16,7 +16,7 @@ module.exports = {
         primaryKey: true,
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
       bio: {
@@ -25,10 +25,10 @@ module.exports = {
       },
       birthdate: {
         type: Sequelize.DATEONLY,
-        allowNull: false,
+        allowNull: true,
       },
       address: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(255),
         allowNull: true,
       },
       contact_id: {
